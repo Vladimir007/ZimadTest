@@ -50,3 +50,7 @@ Test task for ZiMAD company
    If you want to start the process in background,
    read the [Celery documentation](http://docs.celeryproject.org/en/latest/userguide/daemonizing.html#daemonizing)
 7. [Enjoy](http://127.0.0.1:8000)
+
+## API endpoints
+1. **/users/api/list/** - for list of users paginatet by 20 entries per page.
+2. **/users/api/detail/<USER_ID>/** - for user detail (change USER_ID)
