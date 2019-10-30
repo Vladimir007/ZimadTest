@@ -53,4 +53,4 @@ Test task for ZiMAD company
 
 ## API endpoints
 1. **/users/api/list/** - for list of users paginatet by 20 entries per page.
-2. **/users/api/detail/<USER_ID>/** - for user detail (change USER_ID)
+2. **/users/api/detail/USER_ID/** - for user detail (change USER_ID to user id).
