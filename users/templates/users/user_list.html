@@ -1,0 +1,42 @@
+{% extends 'ZimadTest/base.html' %}
+
+{% load i18n %}
+{% load staticfiles %}
+
+{% block body_block %}
+    <div class="ui mini teal buttons">
+        {% if page_obj.has_previous %}
+            <a class="ui icon button" href="{% url 'users:list' %}?page=1"><i class="ui fast backward icon"></i></a>
+            <a class="ui icon button" href="{% url 'users:list' %}?page={{ page_obj.previous_page_number }}"><i class="ui backward icon"></i></a>
+        {% else %}
+            <button class="ui icon disabled button"><i class="ui fast backward icon"></i></button>
+            <button class="ui icon disabled button"><i class="ui backward icon"></i></button>
+        {% endif %}
+        <button class="ui disabled button">{{ page_obj.number }}</button>
+        {% if page_obj.has_next %}
+            <a class="ui icon button" href="{% url 'users:list' %}?page={{ page_obj.next_page_number }}"><i class="ui forward icon"></i></a>
+            <a class="ui icon button" href="{% url 'users:list' %}?page={{ paginator.num_pages }}"><i class="ui fast forward icon"></i></a>
+        {% else %}
+            <button class="ui icon disabled button"><i class="ui forward icon"></i></button>
+            <button class="ui icon disabled button"><i class="ui fast forward icon"></i></button>
+        {% endif %}
+    </div>
+    <table class="ui teal compact table" style="width: auto;">
+        <thead>
+            <tr>
+                <th>{% trans 'Photo' %}</th>
+                <th>{% trans 'Usernname' %}</th>
+                <th>{% trans 'Name' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in page_obj %}
+                <tr>
+                    <td><img class="ui small image" src="{% if obj.image_compressed %}{{ obj.image_compressed.url }}{% else %}{% static 'ZimadTest/notfound.png' %}{% endif %}" alt="Not found!"></td>
+                    <td>{{ obj.username }}</td>
+                    <td>{{ obj.get_full_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

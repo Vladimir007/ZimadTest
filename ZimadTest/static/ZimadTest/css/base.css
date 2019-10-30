@@ -1,0 +1,12 @@
+.body-block {
+    margin: 20px;
+}
+
+body {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.error-text {
+    color: #d22636;
+}
